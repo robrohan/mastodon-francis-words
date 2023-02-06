@@ -1,0 +1,13 @@
+.DS_Store
+__pycache__
+*~
+.env
+audio/*.wav
+image/*.png
+video/*.mp4
+data/sample_sentences.txt
+
+src/TensorFlowTTS
+
+image.png
+demo.wav
