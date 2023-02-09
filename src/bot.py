@@ -162,16 +162,16 @@ def main():
             print("Sentence: " + s_rows[0][0] + " En: " + s_rows[0][1])
 
             audio = do_tts(h, s_rows[0][0])
-            prompt = f"{s_rows[0][0]}, {do_madlib()}, trending on artstation"
+            prompt = f"{s_rows[0][0]}, {do_madlib()}, diffuse lighting, lifelike photorealistic digital painting, trending on artstation"
             image = do_image(h, prompt)
             caption = s_rows[0][0]
             video = do_video(h, audio, image, caption)
             print(video, audio, image)
 
-        # if len(sys.argv) == 2 and sys.argv[1] == "video":
-        #     post_video_to_mastodon(c_rows[0], video)
-        # else:
-        #     post_to_mastodon(c_rows[0])
+        if len(sys.argv) == 2 and sys.argv[1] == "video":
+            post_video_to_mastodon(s_rows[0], video)
+        else:
+            post_to_mastodon(c_rows[0])
 
 
 if __name__=="__main__":
