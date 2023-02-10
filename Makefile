@@ -8,6 +8,7 @@ install:
 	python3 src/bot.py init
 
 database:
+	rm -f fr.db
 	$(SQLITE) fr.db -init ./data/import.sql ".exit"
 
 clean_up:

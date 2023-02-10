@@ -44,12 +44,12 @@ def select_word(conn):
     rows = cur.fetchall()
     return rows
 
-def select_example_sentences(conn):
+def select_example_sentences(conn, word):
     cur = conn.cursor()
     cur.execute(f"""
-        SELECT fr, en
-        FROM sentences
-        ORDER BY RANDOM()
+        SELECT fr_sen, en_sen
+        FROM words
+        WHERE fr = '{word}'
         LIMIT 1
     """)
     rows = cur.fetchall()
@@ -154,7 +154,7 @@ def main():
             exit()
 
         if len(sys.argv) == 2 and sys.argv[1] == "video":
-            s_rows = select_example_sentences(conn)
+            s_rows = select_example_sentences(conn, c_rows[0][0])
 
             hash_object = hashlib.md5( str(c_rows[0][0]).encode('utf-8') )
             h = hash_object.hexdigest()

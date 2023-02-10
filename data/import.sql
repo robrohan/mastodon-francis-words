@@ -1,4 +1,3 @@
 .mode tabs 
-.import ./data/words.tsv words 
-.import ./data/sentences.tsv sentences
+.import ./data/french_1000_data.tsv words 
 .exit
